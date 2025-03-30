@@ -7,7 +7,7 @@ from pycoingecko import CoinGeckoAPI
 # Ваш API ключ
 API_KEY = "ZI1T41EWX4AD33XWRVJW7HGJRSZ5F9IZPW"
 
-# Альтернативные RPC-эндпоинты для Polygon (попробуйте разные варианты)
+# Альтернативные RPC-эндпоинты для Polygon
 RPC_OPTIONS = [
     f"https://polygon-mainnet.g.alchemy.com/v2/{API_KEY}",
     f"https://polygon-rpc.com",
@@ -22,7 +22,7 @@ POLYGONSCAN_API = "https://api.polygonscan.com/api"
 WALLET_ADDRESS = "0xA21bC476F61Ae15698EB659b30c5Ed996E51D532"
 WALLET_ADDRESS = "0xcc922a4e2e526114fcf9d7205d7a805b8c4263e9"
 WALLET_ADDRESS = "0x64dAED14a114B0281F0216412412973A3Af360C7"
-WALLET_ADDRESS = "0x47182d25d7fb7D96aA754c4e88c2f9a35d2a65c4"  # Замените на нужный адрес
+WALLET_ADDRESS = "0x47182d25d7fb7D96aA754c4e88c2f9a35d2a65c4"
 
 # Инициализация CoinGecko API
 cg = CoinGeckoAPI()
@@ -50,7 +50,6 @@ def get_web3_connection():
         try:
             web3 = Web3(Web3.HTTPProvider(rpc_url))
             if web3.is_connected():
-                # Ensure the wallet address is in checksum format
                 global WALLET_ADDRESS
                 WALLET_ADDRESS = web3.to_checksum_address(WALLET_ADDRESS)
                 print(f"Успешно подключено к: {rpc_url}")
